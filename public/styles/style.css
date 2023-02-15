@@ -20,3 +20,7 @@
     position: absolute;
     z-index: 99;
 }
+
+.mapboxgl-popup {
+    max-width: 200px;
+}

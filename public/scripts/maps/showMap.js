@@ -1,4 +1,6 @@
 mapboxgl.accessToken = mapToken;
+const campground = campgroundJSON;
+const coordinates = campground.geometry.coordinates;
 
 const map = new mapboxgl.Map({
   container: "map", // container ID
@@ -8,4 +10,11 @@ const map = new mapboxgl.Map({
   zoom: 9, // starting zoom
 });
 
-const marker1 = new mapboxgl.Marker().setLngLat(coordinates).addTo(map);
+const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+  `Tel: 27715207<br>Email: nvologdins@gmail.com<br>Price: ${campground.price}`
+);
+
+const marker1 = new mapboxgl.Marker()
+  .setLngLat(coordinates)
+  .setPopup(popup)
+  .addTo(map);

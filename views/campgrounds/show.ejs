@@ -119,7 +119,7 @@
 
 <script>
   const mapToken = "<%-process.env.MAPBOX_TOKEN%>"
-  const coordinates = [<%-camp.geometry.coordinates%>]
+  const campgroundJSON = <%-JSON.stringify(camp)%>
 </script>
 
 <script src="/scripts/maps/showMap.js"></script>
