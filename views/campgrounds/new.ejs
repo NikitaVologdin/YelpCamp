@@ -1,0 +1,116 @@
+<%- layout('/layout/boilerplate.ejs') %>
+
+<h1 class="text-center">Add a new Campground</h1>
+<div class="row">
+  <div class="col-6 offset-3">
+    <form
+      action="/campgrounds"
+      method="post"
+      class="form needs-validation"
+      enctype="multipart/form-data"
+      novalidate
+    >
+      <div class="form__title">
+        <label class="form-label" for="title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="campground[title]"
+          placeholder="Type title"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid title.</div>
+      </div>
+      <div class="form__fileInput">
+        <label class="form-label mt-1" for="imagesInput">Add Images</label>
+        <input
+          class="form-control fileInput__input"
+          type="file"
+          id="imagesInput"
+          name="campground[images]"
+          placeholder="Type url"
+          required
+          multiple
+        />
+        <div class="buttons flex-wrap mt-2 d-flex"></div>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid images.</div>
+      </div>
+      <div class="form__city">
+        <label for="city" class="city__label form-label mt-1">City</label>
+        <input
+          type="text"
+          class="form-control city__input"
+          id="city"
+          name="campground[city]"
+          autocomplete="address-level2"
+          placeholder="Type City"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Don`t know where is it.</div>
+      </div>
+      <div class="form__adress">
+        <label class="location__label form-label mt-1" for="address"
+          >Address</label
+        >
+        <input
+          class="form-control location__input"
+          type="text"
+          id="address"
+          name="campground[address]"
+          placeholder="Type Address"
+          autocomplete="address-line1"
+          required
+        />
+        <div class="d-none location__suggestions">
+          <ul class="list-group suggestions__list"></ul>
+        </div>
+
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Don`t know where is it.</div>
+      </div>
+      <div class="form__price">
+        <label class="form-label mt-1" for="price">Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            class="form-control"
+            type="text"
+            id="price"
+            name="campground[price]"
+            placeholder="Type price"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid price.</div>
+        </div>
+      </div>
+      <div class="form__description">
+        <label class="form-label mt-1" for="description">Description</label>
+        <textarea
+          type="text"
+          id="description"
+          name="campground[description]"
+          placeholder="Type description"
+          class="form-control"
+          rows="3"
+          required
+        ></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid price.</div>
+      </div>
+
+      <button class="form__submit btn btn-success mt-2" type="submit">
+        Add Campground
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src="/scripts/forms/inputImages.js"></script>
+<script src="/scripts/maps/showMap.js"></script>
+
+<!-- <script src="/scripts/maps/inputLocation.js"></script> -->

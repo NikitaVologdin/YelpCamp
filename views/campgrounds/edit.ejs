@@ -1,0 +1,89 @@
+<%- layout('/layout/boilerplate.ejs') %>
+<h1 class="text-center">Edit Campground</h1>
+<div class="row">
+  <div class="col-6 offset-3">
+    <form
+      action="/campgrounds/<%=camp._id%>?_method=PUT"
+      method="post"
+      enctype="multipart/form-data"
+      class="form needs-validation"
+      novalidate
+    >
+      <div class="form__title">
+        <label class="form-label" for="title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="campground[title]"
+          placeholder="Type title"
+          value="<%= camp.title %>"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid title.</div>
+      </div>
+      <div class="form__city">
+        <label for="city" class="city__label form-label">City</label>
+        <input
+          type="text"
+          class="form-control city__input"
+          id="city"
+          name="campground[city]"
+          autocomplete="address-level2"
+          placeholder="Type City"
+          value="<%=camp.city%>"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Don`t know where is it.</div>
+      </div>
+      <div class="form__address">
+        <label class="form-label" for="address">Address</label>
+        <input
+          type="text"
+          id="address"
+          name="campground[address]"
+          placeholder="Type location"
+          class="form-control"
+          value="<%= camp.address %>"
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Don`t know where is it.</div>
+      </div>
+      <div class="form__price">
+        <label class="form-label" for="price">Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            class="form-control"
+            type="text"
+            id="price"
+            name="campground[price]"
+            placeholder="Type price"
+            value="<%= camp.price %>"
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid price.</div>
+        </div>
+      </div>
+      <div class="form__description">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          type="text"
+          id="description"
+          name="campground[description]"
+          placeholder="Type description"
+          class="form-control"
+          rows="6"
+        >
+            <%= camp.description %>
+          </textarea
+        >
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid price.</div>
+      </div>
+      <button class="form__submit btn btn-info mt-2" type="submit">
+        Submit Changes
+      </button>
+    </form>
+  </div>
+</div>

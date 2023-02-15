@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="/styles/star-rating.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/style.css" />
+    <script
+      id="search-js"
+      defer
+      src="https://api.mapbox.com/search-js/v1.0.0-beta.14/web.js"
+    ></script>
+    <script>
+      const script = document.getElementById("search-js");
+      script.onload = function () {
+        mapboxsearch.autofill({
+          accessToken:
+            "pk.eyJ1IjoibnZvbG9nZGlucyIsImEiOiJjbGRrMDJ3cjcwNDY1M3pxeG1yOXR3cnNuIn0.v14z3Phyd7u4tIe7pODkJA",
+        });
+      };
+    </script>
+    <title>Yelp Campground</title>
+  </head>
+  <body class="h-100 d-flex flex-column justify-content-between">
+    <header><%- partial('../partials/nav.ejs') %></header>
+    <main class="container mb-5 flex-grow-1">
+      <%- partial('../partials/flash.ejs') %> <%- body %>
+    </main>
+    <footer class="footer bg-dark py-3 mt-auto">
+      <%- partial('../partials/footer.ejs') %>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/validation.js"></script>
+  </body>
+</html>

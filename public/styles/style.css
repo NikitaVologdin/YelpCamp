@@ -1,0 +1,22 @@
+.form__deleteImgContol {
+    display: none;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+.showMap {
+    width: 100%;
+    height: 99%;
+}
+
+.location__inputGroup {
+    position: relative
+}
+
+.location__inputGroup .location__suggestions {
+    position: absolute;
+    z-index: 99;
+}

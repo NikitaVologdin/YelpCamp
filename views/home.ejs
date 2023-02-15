@@ -1,0 +1,16 @@
+<%- layout('./layout/boilerplate.ejs') %>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+  type="text/css"
+/>
+<h1>YelpCamp App</h1>
+
+<div class="map" id="map"></div>
+
+<script>
+  const mapToken = "<%-process.env.MAPBOX_TOKEN%>";
+  const data = {features: <%- JSON.stringify(campgrounds)%>}
+</script>
+<script src="/scripts/mapbox/homeMap.js"></script>
