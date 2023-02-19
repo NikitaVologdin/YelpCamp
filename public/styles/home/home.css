@@ -1,0 +1,24 @@
+#map {
+    height: 70vh;
+}
+
+.nav-link {
+    color: #0dcaf0;
+}
+
+.nav-link:hover {
+    color: #1da2db;
+    border-bottom: 1px solid #1da2db;
+}
+
+.welcome {
+    background-image: url('/imgs/welcome.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
