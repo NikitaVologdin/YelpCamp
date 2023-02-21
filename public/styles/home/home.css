@@ -22,3 +22,7 @@
     background-color: #0dcaf0;
     border-color: #0dcaf0;
 }
+
+.mapboxgl-ctrl-geocoder--input {
+    display: none;
+}
