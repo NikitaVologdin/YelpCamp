@@ -1,4 +1,4 @@
-// const searchForm = document.querySelector("#searchBar");
+const searchForm = document.querySelector("#searchForm");
 const searchInput = document.querySelector("#searchInput");
 const suggestionsDiv = document.querySelector("#suggestions");
 const suggestionsList = document.querySelector("#suggestions-list");
@@ -12,6 +12,11 @@ searchInput.addEventListener("input", (event) => {
     const suggestions = result.features;
 
     renderSuggestion(suggestions);
+
+    // suggestionsDiv.addEventListener("click", (event) => {
+    //   const target = event.target;
+    //   console.log(target);
+    // });
   });
 });
 
@@ -20,6 +25,7 @@ suggestionsList.addEventListener("click", (event) => {
   searchInput.value = target.innerText;
   searchInput.coordinates = target.coordinates;
   suggestionsDiv.classList.add("d-none");
+  searchHandler();
 });
 
 async function fetchData(value) {
@@ -47,4 +53,16 @@ function cleanList(list) {
     list.removeChild(child);
     child = list.lastElementChild;
   }
+}
+
+function searchHandler() {
+  const value = form.elements[0].value;
+  const data = fetchData(value);
+  data.then((result) => {
+    console.log(result.features[0].geometry.coordinates);
+    map.flyTo({
+      center: result.features[0].geometry.coordinates,
+      zoom: 10,
+    });
+  });
 }
