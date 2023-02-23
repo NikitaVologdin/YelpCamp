@@ -1,38 +1,25 @@
-const inputLocation = document.querySelector("#searchBar");
-const suggestionsDiv = document.querySelector("#searchBar-suggestions");
-const suggestionsList = document.querySelector("#searchBar-list");
+// const searchForm = document.querySelector("#searchBar");
+const searchInput = document.querySelector("#searchInput");
+const suggestionsDiv = document.querySelector("#suggestions");
+const suggestionsList = document.querySelector("#suggestions-list");
 
-// const customSearch = document.querySelector("#searchBar");
-
-// customSearch.addEventListener("input", (event) => {});
-
-// const geocoderSearch = document.querySelector(".mapboxgl-ctrl-geocoder--input");
-
-// inputLocation.addEventListener("focus", () => {
-//   suggestionsDiv.classList.remove("d-none");
-// });
-
-inputLocation.addEventListener("input", (event) => {
+searchInput.addEventListener("input", (event) => {
   cleanList(suggestionsList);
 
-  fetchData(event.target.value).then(function (result) {
+  suggestionsDiv.classList.remove("d-none");
+
+  fetchData(searchInput.value).then(function (result) {
     const suggestions = result.features;
 
-    for (let suggestion of suggestions) {
-      const a = document.createElement("a");
-      a.classList.add("list-group-item");
-      a.innerText = suggestion.place_name;
-      a.coordinates = suggestion.geometry.coordinates;
-      suggestionsList.appendChild(a);
-    }
+    renderSuggestion(suggestions);
   });
 });
 
 suggestionsList.addEventListener("click", (event) => {
   const target = event.target;
+  searchInput.value = target.innerText;
+  searchInput.coordinates = target.coordinates;
   suggestionsDiv.classList.add("d-none");
-  inputLocation.value = target.innerText;
-  inputLocation.coordinates = target.coordinates;
 });
 
 async function fetchData(value) {
@@ -41,6 +28,16 @@ async function fetchData(value) {
   let response = await fetch(url);
   let json = await response.json();
   return json;
+}
+
+function renderSuggestion(suggestions) {
+  for (let suggestion of suggestions) {
+    const a = document.createElement("a");
+    a.classList.add("list-group-item", "list-link");
+    a.innerText = suggestion.place_name;
+    a.coordinates = suggestion.geometry.coordinates;
+    suggestionsList.appendChild(a);
+  }
 }
 
 function cleanList(list) {

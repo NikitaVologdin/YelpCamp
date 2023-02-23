@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <script
+      id="search-js"
+      defer
+      src="https://api.mapbox.com/search-js/v1.0.0-beta.14/web.js"
+    ></script>
+    <script>
+      const script = document.getElementById("search-js");
+      script.onload = function () {
+        mapboxsearch.autofill({
+          accessToken: mapToken,
+        });
+      };
+    </script>
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css"
       rel="stylesheet"
@@ -105,6 +118,7 @@
                 class="form-control"
                 placeholder="Check camps in preferible city"
                 id="searchInput"
+                autocomplete="off"
               />
               <button
                 class="btn btn-outline-info"
@@ -125,14 +139,11 @@
                   />
                 </svg>
               </button>
-              <!-- <span class="input-group-text">
-
-              </span> -->
+            </div>
+            <div class="suggestions d-none bg-white mt-2" id="suggestions">
+              <ul class="list-group" id="suggestions-list"></ul>
             </div>
           </form>
-          <div id="searchBar-suggestions">
-            <ul id="searchBar-list"></ul>
-          </div>
         </div>
         <div class="w-100" id="map"></div>
       </div>

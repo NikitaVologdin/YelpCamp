@@ -26,3 +26,18 @@
 .mapboxgl-ctrl-geocoder--input {
     display: none;
 }
+
+.map__serchBar {
+    border: 1px solid green
+}
+
+.suggestions {
+    position: absolute;
+    z-index: 99;
+}
+
+.list-link {
+    cursor: pointer;
+}
+
+.suggestions {}

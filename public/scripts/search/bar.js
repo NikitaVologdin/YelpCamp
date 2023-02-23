@@ -7,7 +7,5 @@ bar.addEventListener("submit", (event) => {
   data.then((result) => {
     console.log(result.features[0].geometry.coordinates);
     map.flyTo({ center: result.features[0].geometry.coordinates, zoom: 10 });
-    // map.setZoom(9);
-    // map.setCenter([-74, 38]);
   });
 });
