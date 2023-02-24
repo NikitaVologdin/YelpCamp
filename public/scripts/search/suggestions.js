@@ -4,19 +4,18 @@ const suggestionsDiv = document.querySelector("#suggestions");
 const suggestionsList = document.querySelector("#suggestions-list");
 
 searchInput.addEventListener("input", (event) => {
-  cleanList(suggestionsList);
+  if (suggestionsList.children.length > 0) {
+    cleanList(suggestionsList);
+  }
 
-  suggestionsDiv.classList.remove("d-none");
+  if (suggestionsDiv.classList.contains("d-none")) {
+    suggestionsDiv.classList.remove("d-none");
+  }
 
   fetchData(searchInput.value).then(function (result) {
     const suggestions = result.features;
 
     renderSuggestion(suggestions);
-
-    // suggestionsDiv.addEventListener("click", (event) => {
-    //   const target = event.target;
-    //   console.log(target);
-    // });
   });
 });
 
@@ -53,16 +52,4 @@ function cleanList(list) {
     list.removeChild(child);
     child = list.lastElementChild;
   }
-}
-
-function searchHandler() {
-  const value = form.elements[0].value;
-  const data = fetchData(value);
-  data.then((result) => {
-    console.log(result.features[0].geometry.coordinates);
-    map.flyTo({
-      center: result.features[0].geometry.coordinates,
-      zoom: 10,
-    });
-  });
 }
