@@ -2,7 +2,9 @@ redesign views/campgrounds/index.ejs add card header, information in it.
 
 views/campgrounds/show.ejs - addres information
 
-comment section
+comment section available for non-logined users
+
+smooth animation for suggestions
 
 responsiveness
 

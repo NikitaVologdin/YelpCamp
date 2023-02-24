@@ -11,7 +11,9 @@ const map = new mapboxgl.Map({
 });
 
 const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-  `Tel: 27715207<br>Email: nvologdins@gmail.com<br>Price: ${campground.price}`
+  `Tel: <a href="tel:${campground.telephone}">${campground.telephone}</a><br>
+  Email: <a href="mailto:${campground.email}">${campground.email}</a><br>
+  Price: ${campground.price}`
 );
 
 const marker1 = new mapboxgl.Marker()

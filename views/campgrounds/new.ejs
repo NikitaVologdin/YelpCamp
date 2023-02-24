@@ -47,7 +47,7 @@
           type="text"
           id="searchInput"
           name="campground[address]"
-          placeholder="City, street address, postal code"
+          placeholder="Street address, City, Postal code"
           autocomplete="off"
           required
         />
@@ -70,6 +70,36 @@
             type="text"
             id="price"
             name="campground[price]"
+            placeholder="Type price"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid price.</div>
+        </div>
+      </div>
+      <div class="form__telephone">
+        <label class="form-label mt-1" for="email">Telephone</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            type="text"
+            id="email"
+            name="campground[telephone]"
+            placeholder="Telephone number"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid price.</div>
+        </div>
+      </div>
+      <div class="form__email">
+        <label class="form-label mt-1" for="email">Email</label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            type="text"
+            id="email"
+            name="campground[email]"
             placeholder="Type price"
             required
           />
