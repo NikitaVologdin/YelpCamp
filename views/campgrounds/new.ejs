@@ -38,33 +38,22 @@
         <div class="valid-feedback">Looks good!</div>
         <div class="invalid-feedback">Please provide a valid images.</div>
       </div>
-      <div class="form__city">
-        <label for="city" class="city__label form-label mt-1">City</label>
-        <input
-          type="text"
-          class="form-control city__input"
-          id="city"
-          name="campground[city]"
-          autocomplete="address-level2"
-          placeholder="Type City"
-          required
-        />
-        <div class="valid-feedback">Looks good!</div>
-        <div class="invalid-feedback">Don`t know where is it.</div>
-      </div>
       <div class="form__adress">
-        <label class="location__label form-label mt-1" for="address"
+        <label class="location__label form-label mt-1" for="searchInput"
           >Address</label
         >
         <input
           class="form-control location__input"
           type="text"
-          id="address"
+          id="searchInput"
           name="campground[address]"
-          placeholder="Type Address"
-          autocomplete="address-line1"
+          placeholder="City, street address, postal code"
+          autocomplete="off"
           required
         />
+        <div class="suggestions position-absolute d-none mt-2" id="suggestions">
+          <ul class="list-group" id="suggestions-list"></ul>
+        </div>
         <div class="d-none location__suggestions">
           <ul class="list-group suggestions__list"></ul>
         </div>
@@ -109,7 +98,8 @@
     </form>
   </div>
 </div>
-
+<script>
+  const mapToken = "<%-process.env.MAPBOX_TOKEN%>";
+</script>
 <script src="/scripts/forms/inputImages.js"></script>
-
-<!-- <script src="/scripts/maps/inputLocation.js"></script> -->
+<script src="/scripts/search/suggestions.js"></script>

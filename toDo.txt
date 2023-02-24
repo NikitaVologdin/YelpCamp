@@ -1,0 +1,9 @@
+redesign views/campgrounds/index.ejs add card header, information in it.
+
+views/campgrounds/show.ejs - addres information
+
+comment section
+
+responsiveness
+
+fix bugs

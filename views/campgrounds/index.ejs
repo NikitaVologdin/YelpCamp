@@ -1,34 +1,32 @@
 <% layout('/layout/boilerplate.ejs') -%>
 <h1>All camps</h1>
-<div class="row">
-  <% for(let camp of camps){ %>
-  <div class="card mb-3">
-    <div class="row py-3">
-      <div class="col-md-4">
-        <div class="d-flex h-100 justify-content-center align-items-center">
-                    <img
-            
-            src="<%= camp.images.length > 0 ? camp.images[0].url : '' %>"
-            class="img-fluid rounded"
-            alt="..."
-          />
-        </div>
-
+<% for(let camp of camps){ %>
+<div class="card mb-3">
+  <div class="card-header">Featured</div>
+  <div class="row py-3">
+    <div class="col-md-4">
+      <div class="d-flex h-100 justify-content-center align-items-center">
+        <img
+          src="<%= camp.images.length > 0 ? camp.images[0].url : '' %>"
+          class="img-fluid rounded"
+          alt="..."
+        />
       </div>
-      <div class="col-md-8">
-          <div class="card-body h-100 py-4">
-            <h5 class="card-title"><%= camp.title %></h5>
-            <h6 class="card-subtitle"><%= camp.location %></h6>
-            <div class="h-100 d-flex flex-column justify-content-center">
-              <p class="card-text"><%= camp.description %></p>
-              <p>
-                  <a href="/campgrounds/<%=camp._id%>" class="btn btn-primary">View <%= camp.title %></a>
-              </p>
-            </div>
-          </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body h-100 py-4">
+        <h5 class="card-title"><%= camp.title %></h5>
+        <h6 class="card-subtitle"><%= camp.city %></h6>
+        <div class="h-100 d-flex flex-column justify-content-center">
+          <p class="card-text"><%= camp.description %></p>
+          <p>
+            <a href="/campgrounds/<%=camp._id%>" class="btn btn-primary"
+              >View <%= camp.title %></a
+            >
+          </p>
+        </div>
       </div>
     </div>
   </div>
-    <% } %>
-  </div>
 </div>
+<% } %>

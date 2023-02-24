@@ -1,4 +1,3 @@
-const searchForm = document.querySelector("#searchForm");
 const searchInput = document.querySelector("#searchInput");
 const suggestionsDiv = document.querySelector("#suggestions");
 const suggestionsList = document.querySelector("#suggestions-list");

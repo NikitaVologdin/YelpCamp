@@ -27,17 +27,10 @@
     display: none;
 }
 
-.map__serchBar {
-    border: 1px solid green
-}
-
-.suggestions {
-    position: absolute;
-    z-index: 99;
-}
-
 .list-link {
     cursor: pointer;
 }
 
-.suggestions {}
+.searchForm__input:hover {
+    border-color: #0dcaf0;
+}

@@ -24,3 +24,7 @@
 .mapboxgl-popup {
     max-width: 200px;
 }
+
+.suggestions {
+    z-index: 99;
+}
