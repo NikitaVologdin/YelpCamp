@@ -21,7 +21,7 @@
         </button>
       <% } %> 
     </div>
-    <h1><%= camp.title %></h1>
+    <h1 class="mt-2"><%= camp.title %></h1>
     <h2 class="fst-italic mb-3"><%= camp.location %></h2>
     <p class="mt-3"><%= camp.description %></p>
     <h5 class="card-title">Created by: <%=camp.author.username%></h5>
@@ -54,7 +54,7 @@
       <div class="mb-3"> 
         <h2 class="mt-4 mb-3 h2">Leave a review</h2>
         <% if(!signedUser) { %>
-            <fieldset class="starability-basic"disabled>
+            <fieldset class="starability-basic" disabled>
         <% } else {%>
             <fieldset class="starability-basic">
         <% } %>
@@ -75,9 +75,15 @@
 
       <div class="mb-3">
         <label for="review" class="form-label">Review</label>
+        
         <textarea
           name="review[body]"
           id="review"
+          <% if (!signedUser) {%>
+            disabled
+            placeholder="You must be signed in"
+            aria-label="Disabled – you must be signed in"
+          <% } %>
           class="form-control"
           cols="10"
           rows="3"
@@ -87,7 +93,14 @@
         <div class="valid-feedback">Looks good!</div>
       </div>
 
-      <button class="btn btn-success">Submit</button>
+      <button 
+        class="btn btn-success" 
+        <% if(!signedUser) {%>
+          disabled
+        <% } %>
+        >
+        Submit
+      </button>
 
       </fieldset>
     </form>

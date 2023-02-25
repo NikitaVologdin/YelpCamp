@@ -42,6 +42,15 @@ const CampgroundSchema = new Schema({
   ],
 });
 
+CampgroundSchema.virtual("properties").get(function () {
+  return {
+    title: this.title,
+    telephone: this.telephone,
+    email: this.email,
+    link: `/campgrounds/${this._id}`,
+  };
+});
+
 CampgroundSchema.post("findOneAndDelete", async function (doc) {
   if (doc) {
     await Review.deleteMany({

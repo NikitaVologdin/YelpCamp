@@ -91,9 +91,11 @@ map.on("load", () => {
   // the location of the feature, with
   // description HTML from its properties.
   map.on("click", "unclustered-point", (e) => {
+    console.log(e);
     const coordinates = e.features[0].geometry.coordinates.slice();
-    const mag = e.features[0].properties.mag;
-    const tsunami = e.features[0].properties.tsunami === 1 ? "yes" : "no";
+    const telephone = e.features[0].properties.telephone;
+    const email = e.features[0].properties.email;
+    const link = e.features[0].properties.link;
 
     // Ensure that if the map is zoomed out such that
     // multiple copies of the feature are visible, the
@@ -104,7 +106,11 @@ map.on("load", () => {
 
     new mapboxgl.Popup()
       .setLngLat(coordinates)
-      .setHTML(`magnitude: ${mag}<br>Was there a tsunami?: ${tsunami}`)
+      .setHTML(
+        `Tel: <a href="tel:${telephone}">Telephone: ${telephone}</a><br>
+      Email: <a href="mailto:${email}">Email: ${email}</a><br>
+      <a href="${link}">Show campgrounds</a>`
+      )
       .addTo(map);
   });
 
