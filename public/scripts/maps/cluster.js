@@ -93,6 +93,7 @@ map.on("load", () => {
   map.on("click", "unclustered-point", (e) => {
     console.log(e);
     const coordinates = e.features[0].geometry.coordinates.slice();
+    const title = e.features[0].properties.title;
     const telephone = e.features[0].properties.telephone;
     const email = e.features[0].properties.email;
     const link = e.features[0].properties.link;
@@ -107,9 +108,7 @@ map.on("load", () => {
     new mapboxgl.Popup()
       .setLngLat(coordinates)
       .setHTML(
-        `Tel: <a href="tel:${telephone}">Telephone: ${telephone}</a><br>
-      Email: <a href="mailto:${email}">Email: ${email}</a><br>
-      <a href="${link}">Show campgrounds</a>`
+        `<a href="tel:${telephone}">${telephone}</a><br><a href="mailto:${email}">${email}</a><br><a href="${link}">Show ${title}</a>`
       )
       .addTo(map);
   });

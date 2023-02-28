@@ -1,5 +1,6 @@
-smooth animation for suggestions
+cluster map pop-ups 
+    -> need to add properties obj to campgrounds SCHEMA  
 
 responsiveness
 
-cluster map pop-ups
+smooth animation for suggestions

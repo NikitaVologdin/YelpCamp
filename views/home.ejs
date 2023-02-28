@@ -169,10 +169,7 @@
       />
       <script>
         const mapToken = "<%-process.env.MAPBOX_TOKEN%>";
-        const data = { features: <%- JSON.stringify(campgrounds)%> };
-        console.log(data)
-
-        data.features[0].properties = {telephone: 27715207}
+        const data = <%- mapboxData %>;
       </script>
       <script src="/scripts/maps/cluster.js"></script>
       <script src="/scripts/search/suggestions.js"></script>
