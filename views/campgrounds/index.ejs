@@ -2,7 +2,7 @@
 <h1>All camps</h1>
 <% for(let camp of camps){ %>
 <div class="card mb-3">
-  <div class="card-header"><%= camp.address %></div>
+  <!-- <div class="card-header"><%= camp.address %></div> -->
   <div class="row py-3 px-3">
     <div class="col-md-4">
       <div class="d-flex h-100 justify-content-center align-items-center">
@@ -21,11 +21,11 @@
         </h6>
         <div class="h-100 d-flex flex-column justify-content-center">
           <p class="card-text"><%= camp.description %></p>
-          <p>
+          <div class="d-flex justify-content-center justify-content-md-start mt-2">
             <a href="/campgrounds/<%=camp._id%>" class="btn btn-primary"
               >View <%= camp.title %></a
             >
-          </p>
+          </div>
         </div>
       </div>
     </div>

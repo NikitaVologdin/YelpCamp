@@ -10,6 +10,7 @@
 .showMap {
     width: 100%;
     height: 99%;
+    min-height: 16rem;
 }
 
 .location__inputGroup {

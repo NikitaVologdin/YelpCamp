@@ -86,6 +86,6 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-app.listen("3000", () => {
+app.listen("3000", ['192.168.0.51' || 'localhost'] , () => {
   console.log(`Server started on port ${3000}`);
 });

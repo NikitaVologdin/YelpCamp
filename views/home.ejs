@@ -34,124 +34,186 @@
   </head>
 
   <body class="h-100 d-flex flex-column justify-content-between bg-dark">
-    <header class="position-absolute w-100 px-5">
-      <nav class="navbar navbar-expand-md navbar-dark">
-        <div class="navbar-brand">YelpCamp</div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item" aria-current="page">
-              <a href="/" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="/campgrounds" class="nav-link">Campgrounds</a>
-            </li>
-            <li class="nav-item">
-              <a href="#toMap" class="nav-link">Map</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav d-flex ms-auto">
-            <% if (!signedUser) {%>
-            <li class="nav-item">
-              <a href="/user/login" class="nav-link">Log In</a>
-            </li>
-            <li class="nav-item">
-              <a href="/user/register" class="nav-link">Register</a>
-            </li>
-            <% } else { %>
-            <li class="nav-item">
-              <a href="/user/logout" class="nav-link text-info"> Log Out </a>
-            </li>
-            <% } %>
-          </ul>
-        </div>
-      </nav>
-    </header>
+    <!-- <header class="w-100 position-absolute">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark">
+          <div class="navbar-brand">YelpCamp</div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="#navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" aria-current="page">
+                <a href="/" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="/campgrounds" class="nav-link">Campgrounds</a>
+              </li>
+              <li class="nav-item">
+                <a href="#toMap" class="nav-link">Map</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav d-flex ms-auto">
+              <% if (!signedUser) {%>
+              <li class="nav-item">
+                <a href="/user/login" class="nav-link">Log In</a>
+              </li>
+              <li class="nav-item">
+                <a href="/user/register" class="nav-link">Register</a>
+              </li>
+              <% } else { %>
+              <li class="nav-item">
+                <a href="/user/logout" class="nav-link text-info"> Log Out </a>
+              </li>
+              <% } %>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header> -->
     <main class="main flex-grow-1 text-white">
       <%- partial('./partials/flash.ejs') %>
-      <div class="welcome vh-100">
-        <div class="container h-100">
-          <div
-            class="welcome__wrapper h-100 d-flex justify-content-center align-items-center"
-          >
-            <div
-              class="welcome__message shadow-sm p-5 text-center border w-50 rounded"
-            >
-              <h1 class="welcome__heading mb-2">YelpCamp</h1>
-              <p class="welcome__paragraph fs-4">
-                Whelcome to YelpCamp! <br />
-                Jump right in and explore our many campgrounds.<br />
-                Feel free to share some of your own and comment others!
-              </p>
-              <div class="welcome__buttons d-flex justify-content-evenly mt-3">
-                <a href="/campgrounds" class="btn btn-outline-light fs-5"
-                  >Campgrounds</a
+      <div class="row">
+        <div class="col-12">
+          <div class="welcome vh-100">
+            <div class="w-100">
+              <div class="container-fluid">
+                <nav class="navbar navbar-expand-md navbar-dark">
+                  <div class="navbar-brand">YelpCamp</div>
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="#navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div
+                    class="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                  >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item" aria-current="page">
+                        <a href="/" class="nav-link">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/campgrounds" class="nav-link">Campgrounds</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#toMap" class="nav-link">Map</a>
+                      </li>
+                    </ul>
+                    <ul class="navbar-nav d-flex ms-auto">
+                      <% if (!signedUser) {%>
+                      <li class="nav-item">
+                        <a href="/user/login" class="nav-link">Log In</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="/user/register" class="nav-link">Register</a>
+                      </li>
+                      <% } else { %>
+                      <li class="nav-item">
+                        <a href="/user/logout" class="nav-link text-info">
+                          Log Out
+                        </a>
+                      </li>
+                      <% } %>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+            <div class="container-lg h-100">
+              <div
+                class="welcome__wrapper h-100 d-flex justify-content-center align-items-center"
+              >
+                <div
+                  class="welcome__message shadow-sm p-5 text-center border rounded"
                 >
-                <a href="#toMap" class="btn btn-outline-light fs-5"
-                  >Interactive Map</a
-                >
+                  <h1 class="welcome__heading mb-2">YelpCamp</h1>
+                  <p class="welcome__paragraph fs-4">
+                    Whelcome to YelpCamp! <br />
+                    Jump right in and explore our many campgrounds.<br />
+                    Feel free to share some of your own and comment others!
+                  </p>
+                  <div
+                    class="welcome__buttons d-flex flex-column flex-md-row justify-content-evenly mt-3 gap-3"
+                  >
+                    <a href="/campgrounds" class="btn btn-outline-light fs-5"
+                      >Campgrounds</a
+                    >
+                    <a href="#toMap" class="btn btn-outline-light fs-5"
+                      >Interactive Map</a
+                    >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div
-        class="map vh-100 d-flex flex-column align-items-center justify-content-evenly"
-        id="toMap"
-      >
-        <div class="map__serchBar w-50">
-          <form id="searchForm">
-            <div class="input-group input-group-lg">
-              <input
-                type="text"
-                class="form-control searchForm__input"
-                placeholder="Check camps in preferible city"
-                id="searchInput"
-                autocomplete="off"
-              />
-              <button
-                class="btn btn-outline-info"
-                type="submit"
-                id="searchButton"
-              >
-                Search
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-search"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                  />
-                </svg>
-              </button>
+      <div class="row">
+        <div class="col-12">
+          <div
+            class="map vh-100 d-flex flex-column align-items-center justify-content-evenly"
+            id="toMap"
+          >
+            <div class="col-11 col-sm-10 col-md-8 col-lg-6">
+              <div class="map__serchBar">
+                <form id="searchForm">
+                  <div class="input-group input-group-lg">
+                    <input
+                      type="text"
+                      class="form-control searchForm__input"
+                      placeholder="Check camps in preferible city"
+                      id="searchInput"
+                      autocomplete="off"
+                    />
+                    <button
+                      class="btn btn-outline-info"
+                      type="submit"
+                      id="searchButton"
+                    >
+                      Search
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-search"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    class="suggestions d-none position-absolute mt-2"
+                    id="suggestions"
+                  >
+                    <ul class="list-group" id="suggestions-list"></ul>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div
-              class="suggestions d-none position-absolute mt-2"
-              id="suggestions"
-            >
-              <ul class="list-group" id="suggestions-list"></ul>
-            </div>
-          </form>
+            <div class="w-100" id="map"></div>
+          </div>
         </div>
-        <div class="w-100" id="map"></div>
       </div>
     </main>
-
     <footer class="footer bg-dark py-3 mt-auto">
       <%- partial('./partials/footer.ejs') %>
     </footer>
