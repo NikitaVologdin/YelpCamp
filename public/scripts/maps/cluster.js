@@ -108,7 +108,10 @@ map.on("load", () => {
     new mapboxgl.Popup()
       .setLngLat(coordinates)
       .setHTML(
-        `<a href="tel:${telephone}">${telephone}</a><br><a href="mailto:${email}">${email}</a><br><a href="${link}">Show ${title}</a>`
+        `Tel:  <a href="tel:${telephone}">${telephone}</a><br>
+         Email: <a href="mailto:${email}">${email}</a><br>
+        <a href="${link}">Show ${title}</a>
+        `
       )
       .addTo(map);
   });
