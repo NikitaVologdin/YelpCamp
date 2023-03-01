@@ -1,3 +1,0 @@
-responsiveness
-
-smooth animation for suggestions
