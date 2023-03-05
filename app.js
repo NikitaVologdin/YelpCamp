@@ -18,6 +18,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/userSchema");
 const mongoSanitize = require("express-mongo-sanitize");
+const helmet = require("helmet");
+const MongoStore = require("connect-mongo");
 
 app.engine("ejs", engine);
 app.set("view enginge", "ejs");
@@ -25,12 +27,24 @@ app.set("views", path.join(__dirname, "views"));
 app.use(mongoSanitize());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-
 app.use(methodOverride("_method"));
+
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+const secret = process.env.SECRET || "thisisgreatestsecretintheworld";
+
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret,
+  },
+  touchAfter: 24 * 60 * 60,
+});
+store.on('error', err => console.log(err))
 
 app.use(
   session({
-    secret: "foo",
+    store,
+    secret,
     resave: true,
     saveUninitialized: true,
     cookie: {
@@ -49,6 +63,52 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// app.use(helmet());
+
+// const scriptSrcUrls = [
+//   "https://stackpath.bootstrapcdn.com/",
+//   "https://api.tiles.mapbox.com/",
+//   "https://api.mapbox.com/",
+//   "https://kit.fontawesome.com/",
+//   "https://cdnjs.cloudflare.com/",
+//   "https://cdn.jsdelivr.net",
+// ];
+// const styleSrcUrls = [
+//   "https://kit-free.fontawesome.com/",
+//   "https://stackpath.bootstrapcdn.com/",
+//   "https://api.mapbox.com/",
+//   "https://api.tiles.mapbox.com/",
+//   "https://fonts.googleapis.com/",
+//   "https://use.fontawesome.com/",
+// ];
+// const connectSrcUrls = [
+//   "https://api.mapbox.com/",
+//   "https://a.tiles.mapbox.com/",
+//   "https://b.tiles.mapbox.com/",
+//   "https://events.mapbox.com/",
+// ];
+// const fontSrcUrls = [];
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: [],
+//       connectSrc: ["'self'", ...connectSrcUrls],
+//       scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+//       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+//       workerSrc: ["'self'", "blob:"],
+//       objectSrc: [],
+//       imgSrc: [
+//         "'self'",
+//         "blob:",
+//         "data:",
+//         "https://res.cloudinary.com/douqbebwk/",
+//         "https://images.unsplash.com/",
+//       ],
+//       fontSrc: ["'self'", ...fontSrcUrls],
+//     },
+//   })
+// );
+
 app.use((req, res, next) => {
   if (!["/user/login", "/"].includes(req.originalUrl)) {
     req.session.returnTo = req.originalUrl;
@@ -66,7 +126,7 @@ app.use("/campgrounds/:id/reviews", reviewsRoutes);
 app.use("/user", userRoutes);
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/yelp-camp", {
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   //   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -89,6 +149,6 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-app.listen("3000", ['192.168.0.51' || 'localhost'] , () => {
+app.listen("3000", ["192.168.0.51" || "localhost"], () => {
   console.log(`Server started on port ${3000}`);
 });
