@@ -20,10 +20,12 @@ const User = require("./models/userSchema");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const MongoStore = require("connect-mongo");
+const favicon = require("serve-favicon");
 
 app.engine("ejs", engine);
 app.set("view enginge", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 app.use(mongoSanitize());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
