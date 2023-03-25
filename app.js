@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/yelp-camp";
 const secret = process.env.SECRET || "thisisgreatestsecretintheworld";
 
 const store = MongoStore.create({
@@ -39,7 +39,7 @@ const store = MongoStore.create({
   },
   touchAfter: 24 * 60 * 60,
 });
-store.on('error', err => console.log(err))
+store.on("error", (err) => console.log(err));
 
 app.use(
   session({

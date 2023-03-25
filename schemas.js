@@ -11,12 +11,12 @@ const extension = (joi) => ({
     escapeHTML: {
       validate(value, helpers) {
         // escape symbols only (e.g. &, <)
-        const filtered = sanitizeHtml(value, {
+        const filtered = sanitizeHTML(value, {
           allowedTags: false,
           allowedAttributes: false,
         });
         // remove html
-        const clean = sanitizeHtml(filtered, {
+        const clean = sanitizeHTML(filtered, {
           allowedTags: [],
           allowedAttributes: {},
         });
