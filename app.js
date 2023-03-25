@@ -25,6 +25,7 @@ const favicon = require("serve-favicon");
 app.engine("ejs", engine);
 app.set("view enginge", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
 app.use(mongoSanitize());
@@ -121,11 +122,6 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
-});
-
-app.get("/favicon.ico", function (req, res) {
-  res.status(204);
-  res.end();
 });
 
 app.use("/", homeRoutes);
