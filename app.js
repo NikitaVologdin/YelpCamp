@@ -22,6 +22,7 @@ const helmet = require("helmet");
 const MongoStore = require("connect-mongo");
 const favicon = require("serve-favicon");
 
+
 app.engine("ejs", engine);
 app.set("view enginge", "ejs");
 app.set("views", path.join(__dirname, "views"));
