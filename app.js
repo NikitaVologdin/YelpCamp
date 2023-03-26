@@ -28,6 +28,10 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
+// app.get('/favicon.ico',(res,req) => {
+//     res.statusCode(204)
+// })
+
 app.use(mongoSanitize());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
