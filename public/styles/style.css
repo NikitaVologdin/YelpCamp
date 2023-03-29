@@ -30,3 +30,11 @@
     z-index: 99;
 }
 
+.list-group .list-group-item {
+    cursor: pointer;
+}
+
+.list-group .list-group-item:hover {
+    color: #0a58ca;
+}
+

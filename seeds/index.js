@@ -16,14 +16,12 @@ const lorem = new LoremIpsum({
   },
 });
 
-console.log(cities);
-debugger;
-
-main().catch((err) => console.log(err));
-
 async function main() {
   await mongoose.connect("mongodb://localhost:27017/yelp-camp");
 }
+
+main().catch((err) => console.log(err));
+
 
 const random100 = function (arr) {
   const num = Math.floor(Math.random() * 100);
@@ -40,6 +38,7 @@ const randomPrice = function () {
 };
 
 const seedDb = async function (amount) {
+
   for (let i = 0; i < amount; i++) {
     const city = random100(cities);
     const camp = new Campground({
@@ -48,10 +47,16 @@ const seedDb = async function (amount) {
       )}`,
       images: [
         {
-          filename: "YelpCamp/cnfg7o0x8qpx6eamp11a",
-          url: "https://res.cloudinary.com/dojvgjueu/image/upload/v1673944667/YelpCamp/cnfg7o0x8qpx6eamp11a.jpg",
+          filename: "mhe4wnvjbcxapdjj7swv",
+          url: "https://res.cloudinary.com/dojvgjueu/image/upload/v1679808292/YelpCamp/mhe4wnvjbcxapdjj7swv.jpg",
+        },
+        {
+          filename: "gy6gngcp6go0mqpujbl6",
+          url: "https://res.cloudinary.com/dojvgjueu/image/upload/v1679808292/YelpCamp/gy6gngcp6go0mqpujbl6.jpg",
         },
       ],
+      telephone: 27715207,
+      email: 'nvologdins@gmail.com',
       description: lorem.generateParagraphs(3),
       price: +randomPrice(),
       city: city.asciiname,

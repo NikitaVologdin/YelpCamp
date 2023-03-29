@@ -36,11 +36,11 @@ async function fetchData(value) {
 
 function renderSuggestion(suggestions) {
   for (let suggestion of suggestions) {
-    const a = document.createElement("a");
-    a.classList.add("list-group-item", "list-link");
-    a.innerText = suggestion.place_name;
-    a.coordinates = suggestion.geometry.coordinates;
-    suggestionsList.appendChild(a);
+    const li = document.createElement("li");
+    li.classList.add("list-group-item", "list-link");
+    li.innerText = suggestion.place_name;
+    li.coordinates = suggestion.geometry.coordinates;
+    suggestionsList.appendChild(li);
   }
 }
 
