@@ -22,7 +22,6 @@ const helmet = require("helmet");
 const MongoStore = require("connect-mongo");
 const favicon = require("serve-favicon");
 
-
 app.engine("ejs", engine);
 app.set("view enginge", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -147,15 +146,15 @@ db.once("open", () => {
   console.log("Database connected");
 });
 
-app.use("*", (req, res, next) => {
-  next(new ExpressError("Page not found", 404));
-});
-
 app.use((err, req, res, next) => {
   if (!err.message) err.message = "Something went wrong";
   const { statusCode = 500 } = err;
   res.status(statusCode).render("error.ejs", { err });
   next(err);
+});
+
+app.use("*", (req, res, next) => {
+  next(new ExpressError("Page not found", 404));
 });
 
 app.listen(process.env.PORT, ["192.168.0.51" || "localhost"], () => {

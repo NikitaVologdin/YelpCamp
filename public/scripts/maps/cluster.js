@@ -91,7 +91,6 @@ map.on("load", () => {
   // the location of the feature, with
   // description HTML from its properties.
   map.on("click", "unclustered-point", (e) => {
-    console.log(e);
     const coordinates = e.features[0].geometry.coordinates.slice();
     const title = e.features[0].properties.title;
     const telephone = e.features[0].properties.telephone;
